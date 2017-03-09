@@ -14,19 +14,19 @@ echo 'source  /usr/share/virtualenvwrapper/virtualenvwrapper.sh' >> ~/.profile
 source ~/.profile
 mkvirtualenv jupyterEnvironment -p /usr/bin/python3
 pip install -U pip
-pip install jupyter
-pip install jupyter_contrib_nbextensions
+pip install -U jupyter
+pip install -U jupyter_contrib_nbextensions
 jupyter contrib nbextension install --sys-prefix --symlink
-jupyter nbextension enable contrib_nbextensions_help_item/main
-jupyter nbextension enable execute_time/ExecuteTime
-jupyter nbextension enable skip-traceback/main
-jupyter nbextension enable tree-filter/index
-jupyter nbextension enable codefolding/main
-jupyter nbextension enable toc2/main
-jupyter nbextension enable collapsible_headings/main
-jupyter nbextension enable nbextensions_configurator/tree_tab/main
-jupyter nbextension enable nbextensions_configurator/config_menu/main
-jupyter nbextension enable init_cell/main
+pip install -U jupyter_nbextensions_configurator
+jupyter nbextensions_configurator enable --sys-prefix
+jupyter nbextension enable --sys-prefix contrib_nbextensions_help_item/main 
+jupyter nbextension enable --sys-prefix execute_time/ExecuteTime
+jupyter nbextension enable --sys-prefix skip-traceback/main
+jupyter nbextension enable --sys-prefix --section=tree tree-filter/index
+jupyter nbextension enable --sys-prefix codefolding/main
+jupyter nbextension enable --sys-prefix toc2/main
+jupyter nbextension enable --sys-prefix collapsible_headings/main
+jupyter nbextension enable --sys-prefix init_cell/main
 ```
 
 ## TL;DR Run Jupyter
@@ -74,18 +74,14 @@ jupyter notebook
    
 7. Install the jupyter extensions, as you want to be able to see table of contents and the like
     ```bash
-    pip install jupyter_contrib_nbextensions
+    pip install -U jupyter_contrib_nbextensions
     jupyter contrib nbextension install --sys-prefix --symlink
+    pip install -U jupyter_nbextensions_configurator
+    jupyter nbextensions_configurator enable --sys-prefix
     ```    
+    
 8. Enable the most nessesary extensions
     ```bash
-    
-    #An nbextension that renders the nbextensions configurator interface as a dashboard tab.
-    jupyter nbextension enable nbextensions_configurator/tree_tab/main 
-
-    #Add an edit-menu item to open the nbextensions configurator page
-    jupyter nbextension enable nbextensions_configurator/config_menu/main 
-
     #The contrib_nbextensions_help_item is a tiny extension that just adds an item in the notebook's help menu, pointing to the jupyter_contrib_nbextensions at readthedocs.
     jupyter nbextension enable contrib_nbextensions_help_item/main
     
