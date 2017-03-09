@@ -17,7 +17,16 @@ pip install -U pip
 pip install jupyter
 pip install jupyter_contrib_nbextensions
 jupyter contrib nbextension install --sys-prefix --symlink
+jupyter nbextension enable contrib_nbextensions_help_item/main
+jupyter nbextension enable execute_time/ExecuteTime
+jupyter nbextension enable skip-traceback/main
+jupyter nbextension enable tree-filter/index
+jupyter nbextension enable codefolding/main
 jupyter nbextension enable toc2/main
+jupyter nbextension enable collapsible_headings/main
+jupyter nbextension enable nbextensions_configurator/tree_tab/main
+jupyter nbextension enable nbextensions_configurator/config_menu/main
+jupyter nbextension enable init_cell/main
 ```
 
 ## TL;DR Run Jupyter
@@ -26,6 +35,7 @@ source ~/.profile
 workon jupyterEnvironment
 jupyter notebook
 ```
+
 
 ## The jupyter install procedure
 1. To install the pythons virtualenv system on a ubuntu system, do
@@ -67,9 +77,38 @@ jupyter notebook
     pip install jupyter_contrib_nbextensions
     jupyter contrib nbextension install --sys-prefix --symlink
     ```    
-8. Enable the TableOfContents extension
+8. Enable the most nessesary extensions
     ```bash
+    
+    #An nbextension that renders the nbextensions configurator interface as a dashboard tab.
+    jupyter nbextension enable nbextensions_configurator/tree_tab/main 
+
+    #Add an edit-menu item to open the nbextensions configurator page
+    jupyter nbextension enable nbextensions_configurator/config_menu/main 
+
+    #The contrib_nbextensions_help_item is a tiny extension that just adds an item in the notebook's help menu, pointing to the jupyter_contrib_nbextensions at readthedocs.
+    jupyter nbextension enable contrib_nbextensions_help_item/main
+    
+    #Display when each cell has been executed and how long it took
+    jupyter nbextension enable execute_time/ExecuteTime
+
+    #Don't display traceback, only error message
+    jupyter nbextension enable skip-traceback/main
+
+    #An extension that allows you to filter by filename in the Jupyter notebook file tree (aka dashboard) page.
+    jupyter nbextension enable tree-filter/index
+
+    #This extension enables the CodeMirror feature to allow codefolding in code cells
+    jupyter nbextension enable codefolding/main
+
+    #Allows notebook to have collapsible sections, separated by headings
+    jupyter nbextension enable collapsible_headings/main
+    
+    #The toc2 extension collect all running headers and display them in a floating window, as a sidebar or with a navigation menu. 
     jupyter nbextension enable toc2/main
+    
+    #Add a cell toolbar selector to mark cells as 'initialization' cells. 
+    jupyter nbextension enable init_cell/main
     ```
    
 9. Then start jupyter and launch the notebooks
